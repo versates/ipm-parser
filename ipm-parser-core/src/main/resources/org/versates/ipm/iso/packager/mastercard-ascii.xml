@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE isopackager PUBLIC
+        "-//jPOS/jPOS Generic Packager DTD 1.0//EN"
+        "http://jpos.org/dtd/generic-packager-1.0.dtd">
+
+<!-- ISO 8583:1987 (ASCII) field descriptions for GenericPackager -->
+
+<isopackager>
+    <isofield id="0" length="4" name="Identificador de Versão de arquivo (MTI)" class="org.jpos.iso.IFA_NUMERIC"/>
+    <isofield id="1" length="16" name="Mapa de Bits" class="org.jpos.iso.IFB_BITMAP"/>
+    <isofield id="2" length="19" name="Número da Conta Principal (PAN)" class="org.jpos.iso.IFA_LLNUM" pad="false"/>
+    <isofield id="3" length="6" name="Código de Processamento" class="org.jpos.iso.IFA_NUMERIC"/>
+    <isofield id="4" length="12" name="Valor, Transação" class="org.jpos.iso.IFA_NUMERIC"/>
+    <isofield id="5" length="12" name="Valor, Conciliação" class="org.jpos.iso.IFA_NUMERIC"/>
+    <isofield id="6" length="12" name="Valor, Faturamento ao Titular" class="org.jpos.iso.IFA_NUMERIC"/>
+    <isofield id="9" length="8" name="Taxa de Conversão, Conciliação" class="org.jpos.iso.IFA_NUMERIC"/>
+    <isofield id="10" length="8" name="Taxa de Conversão, Faturamento ao Titular" class="org.jpos.iso.IFA_NUMERIC"/>
+    <isofield id="12" length="12" name="Data e Hora, Transação Local" class="org.jpos.iso.IFA_NUMERIC"/>
+    <isofield id="14" length="4" name="Data, Vencimento" class="org.jpos.iso.IFA_NUMERIC"/>
+    <isofield id="22" length="12" name="Código de Dados do Ponto de Serviço" class="org.jpos.iso.IF_CHAR"/>
+    <isofield id="23" length="3" name="Número de Sequência do Cartão" class="org.jpos.iso.IFA_NUMERIC"/>
+    <isofield id="24" length="3" name="Código de Função" class="org.jpos.iso.IFA_NUMERIC"/>
+    <isofield id="25" length="4" name="Código de Razão da Mensagem" class="org.jpos.iso.IFA_NUMERIC"/>
+    <isofield id="26" length="4" name="Código Comercial do Aceitante de Cartão (MCC)" class="org.jpos.iso.IFA_NUMERIC"/>
+    <isofield id="30" length="24" name="Valores, Originais" class="org.jpos.iso.IFA_NUMERIC"/>
+    <isofield id="31" length="23" name="Dados de Referência do Adquirente" class="org.jpos.iso.IFA_LLNUM" pad="true"/>
+    <isofield id="32" length="11" name="Código de ID da Instituição Adquirente" class="org.jpos.iso.IFA_LLNUM"
+              pad="false"/>
+    <isofield id="33" length="11" name="Código de ID da Instituição Remetente" class="org.jpos.iso.IFA_LLNUM"
+              pad="false"/>
+    <isofield id="37" length="12" name="Número de Referência de Acesso a Documentos" class="org.jpos.iso.IF_CHAR"/>
+    <isofield id="38" length="6" name="Código de Aprovação" class="org.jpos.iso.IF_CHAR"/>
+    <isofield id="40" length="3" name="Código de Serviço" class="org.jpos.iso.IFA_NUMERIC"/>
+    <isofield id="41" length="8" name="ID do Terminal do Aceitante de Cartão" class="org.jpos.iso.IF_CHAR"/>
+    <isofield id="42" length="15" name="Código de ID do Aceitante de Cartão" class="org.jpos.iso.IF_CHAR"/>
+    <isofield id="43" length="99" name="Nome/Local do Aceitante de Cartão" class="org.jpos.iso.IFA_LLCHAR" pad="false"/>
+    <isofieldpackager id="48" length="999" name="Dados Adicionais (PSD)" class="org.jpos.iso.IFA_LLLBINARY"
+                      packager="org.versates.ipm.iso.packager.MasterCardASCIISubfieldPackager"/>
+    <isofield id="49" length="3" name="Código da Moeda, Transação" class="org.jpos.iso.IFA_NUMERIC"/>
+    <isofield id="50" length="3" name="Código da Moeda, Conciliação" class="org.jpos.iso.IFA_NUMERIC"/>
+    <isofield id="51" length="3" name="Código da Moeda, Faturamento ao Portador de Cartão"
+              class="org.jpos.iso.IFA_NUMERIC"/>
+    <isofield id="54" length="20" name="Valores, Adicionais" class="org.jpos.iso.IFA_LLLCHAR" pad="true"/>
+    <isofield id="55" length="255" name="ICC" class="org.jpos.iso.IFA_LLLBINARY" pad="false"/>
+    <isofield id="62" length="999" name="Valores, Adicionais" class="org.jpos.iso.IFA_LLLCHAR" pad="false"/>
+    <isofield id="63" length="16" name="ID do Ciclo de Vida da Transação" class="org.jpos.iso.IFA_LLLCHAR" pad="true"/>
+    <isofield id="71" length="8" name="Número da Mensagem" class="org.jpos.iso.IFA_NUMERIC"/>
+    <isofield id="72" length="999" name="Registro de Dados" class="org.jpos.iso.IFA_LLLCHAR" pad="false"/>
+    <isofield id="73" length="6" name="Data, Ação" class="org.jpos.iso.IFA_NUMERIC"/>
+    <isofield id="93" length="11" name="Código de ID da Instituição de Destino da Transação"
+              class="org.jpos.iso.IFA_LLNUM" pad="false"/>
+    <isofield id="94" length="11" name="Código de ID da Instituição Originadora da Transação"
+              class="org.jpos.iso.IFA_LLNUM" pad="false"/>
+    <isofield id="95" length="10" name="Dados de Referência do Emissor do Cartão" class="org.jpos.iso.IFA_LLNUM"
+              pad="true"/>
+    <isofield id="100" length="11" name="Dados de Referência do Emissor do Cartão" class="org.jpos.iso.IFA_LLNUM"
+              pad="false"/>
+    <isofield id="111" length="12" name="Valor, Avaliação da Conversão da Moeda" class="org.jpos.iso.IFA_LLLNUM"
+              pad="true"/>
+    <isofield id="123" length="999" name="Dados Adicionais 3" class="org.jpos.iso.IFA_LLLCHAR" pad="false"/>
+    <isofield id="124" length="999" name="Dados Adicionais 4" class="org.jpos.iso.IFA_LLLCHAR" pad="false"/>
+    <isofield id="125" length="999" name="Dados Adicionais 5" class="org.jpos.iso.IFA_LLLCHAR" pad="false"/>
+</isopackager>

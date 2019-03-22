@@ -23,7 +23,6 @@
     </scm>
     <modules>
         <module>ipm-parser-core</module>
-        <module>ipm-parser-client</module>
         <module>ipm-parser-conversor</module>
     </modules>
     <build>

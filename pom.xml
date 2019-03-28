@@ -144,18 +144,6 @@
             </build>
         </profile>
     </profiles>
-    <distributionManagement>
-        <repository>
-            <id>releases</id>
-            <name>nexus-tools-poa</name>
-            <url>http://mavenpoa.tools.com.br:8081/nexus/content/repositories/releases</url>
-        </repository>
-        <snapshotRepository>
-            <id>snapshots</id>
-            <name>nexus-tools-poa</name>
-            <url>http://mavenpoa.tools.com.br:8081/nexus/content/repositories/snapshots</url>
-        </snapshotRepository>
-    </distributionManagement>
     <dependencies>
         <dependency>
             <groupId>junit</groupId>

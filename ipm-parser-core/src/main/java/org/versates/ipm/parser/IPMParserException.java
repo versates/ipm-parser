@@ -3,7 +3,7 @@ package org.versates.ipm.parser;
 import org.jpos.iso.ISOException;
 
 /**
- * Classe de exceção verificada para problemas encontrados na tentativa de processamento de arquivos IPM.
+ * Expected exception class for problems encountered when trying to process IPM files.
  *
  * @author Ramses Vidor
  */
@@ -12,28 +12,28 @@ public final class IPMParserException extends Exception {
     private static final long serialVersionUID = -2959592272962443876L;
 
     /**
-     * Constrói uma instância dessa exceção com uma mensagem definida.
+     * Constructs an instance of this exception with a defined message.
      *
-     * @param message A mensagem a ser definida para esta exceção
+     * @param message The message to be set for this exception
      */
     public IPMParserException(String message) {
         super(message);
     }
 
     /**
-     * Constrói uma instância dessa exceção com a causa raiz definida.
+     * Constructs an instance of this exception with the root cause defined.
      *
-     * @param cause A causa raiz dessa exceção
+     * @param cause The root cause of this exception
      */
     public IPMParserException(ISOException cause) {
         super(cause);
     }
 
     /**
-     * Constrói uma instância dessa exceção com uma mensagem e a causa raiz definidas.
+     * Constructs an instance of this exception with a message and root cause defined.
      *
-     * @param message A mensagem a ser definida para esta exceção
-     * @param cause   A causa raiz dessa exceção
+     * @param message The message to be set for this exception
+     * @param cause The root cause of this exception
      */
     IPMParserException(String message, Throwable cause) {
         super(message, cause);

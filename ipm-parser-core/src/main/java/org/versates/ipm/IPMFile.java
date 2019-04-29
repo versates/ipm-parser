@@ -16,10 +16,10 @@ import java.util.List;
 import static java.text.MessageFormat.format;
 
 /**
- * Classe de representação de arquivo de Integrated Products Messages (IPM). A compensação por meio do formato de
- * Mensagens de Produtos Integrados (IPM) é o movimento de informações referentes à transação enviado pelo membro ao
- * sistema de compensação. Cada arquivo IPM contém um grupo de mensagens ISO 8583, os quais apresentam essas informações
- * de transação.
+ * File representation class of Integrated Products Messages (IPM). Compensation by means of the
+ * Integrated Product Messages (IPM) is the movement of information pertaining to the transaction sent by the member to the
+ * Compensation system. Each IPM file contains an ISO 8583 message group, which presents this information
+ * of transaction.
  *
  * @author Ramses Vidor
  */
@@ -38,13 +38,13 @@ public class IPMFile implements Serializable {
     private final List<ISOTransaction> transactions = new ArrayList<ISOTransaction>();
 
     /**
-     * Constrói uma instância de arquivo IPM.
+     * Constructs an IPM file instance.
      *
-     * @param name   O nome do arquivo IPM
-     * @param bytes  Conteúdo do arquivo IPM em bytes
-     * @param parser O parser a ser utilizado para interpretar o arquivo IPM. Deve ser compatível com a codificação e o
-     *               layout do arquivo IPM a ser processado
-     * @throws IPMParserException Exceção lançada se o arquivo IPM não corresponder aos critérios de processamento.
+     * @param name The name of the IPM file
+     * @param bytes IPM file contents in bytes
+     * @param parser The parser to be used to interpret the IPM file. It must be compatible with coding and
+     * IPM file layout to be processed
+     * @throws IPMParserException Exception thrown if the IPM file does not match the processing criteria.
      */
     public IPMFile(String name, byte[] bytes, IPMFileParser parser) throws IPMParserException {
         if (StringUtils.isEmpty(name)) {
@@ -56,68 +56,68 @@ public class IPMFile implements Serializable {
     }
 
     /**
-     * Retorna o nome do arquivo IPM físico.
+     * Returns the name of the physical IPM file.
      *
-     * @return o nome do arquivo IPM
+     * @return the IPM file name
      */
     public String name() {
         return name;
     }
 
     /**
-     * Retorna a mensagem de cabeçalho de arquivo (primeira mensagem ISO 8583 apresentada no arquivo), a qual apresenta
-     * informações referentes ao arquivo. O cabeçalho de arquivo é identificado pelo MTI 1644, código de função (DE 24)
+     * Returns the file header message (the first ISO message 8583 displayed in the file), which
+     * file information. The file header is identified by MTI 1644, function code (DE 24)
      * 697.
      *
-     * @return cabeçalho do arquivo IPM
+     * @return IPM file header
      */
     public ISOTransaction header() {
         return header;
     }
 
     /**
-     * Retorna a mensagem de rodapé de arquivo (última mensagem ISO 8583 apresentada no arquivo), a qual apresenta
-     * informações referentes ao arquivo. O rodapé de arquivo é identificado pelo MTI 1644, código de função (DE 24)
+     * Returns the file footer message (last message ISO 8583 presented in the file), which presents
+     * file information. The file footer is identified by the MTI 1644, function code (DE 24)
      * 695.
      *
-     * @return rodapé do arquivo IPM
+     * @return IPM file footer
      */
     public ISOTransaction footer() {
         return footer;
     }
 
     /**
-     * Retorna o total de mensagens ISO 8583 contidas no arquivo IPM, não contabilizando as mensagens de cabeçalho e
-     * rodapé.
+     * Returns the total of ISO 8583 messages contained in the IPM file, not counting the header messages and
+     * footer.
      *
-     * @return total de mensagens ISO 8583 contidas no arquivo IPM
+     * @return total of ISO 8583 messages contained in the IPM file
      */
     public int countTransactions() {
         return transactions.size();
     }
 
     /**
-     * Retorna as mensagens ISO 8583 contidas no arquivo IPM, com exceção das mensagens de cabeçalho e rodapé.
+     * Returns ISO 8583 messages contained in the IPM file, with the exception of header and footer messages.
      *
-     * @return mensagens ISO 8583 contidas no arquivo IPM
+     * @return ISO 8583 messages contained in the IPM file
      */
     public List<ISOTransaction> transactions() {
         return transactions;
     }
 
     /**
-     * Imprime a saída do conteúdo do arquivo no formato XML no stream definido pelo parâmetro de entrada.
+     * Prints the output of the file contents in XML format in the stream defined by the input parameter.
      *
-     * @param printStream Stream para saída do output onde o resultado deve ser impresso
+     * @param printStream Stream to output the output where the result should be printed
      */
     public void dump(PrintStream printStream) {
         printStream.println(xml());
     }
 
     /**
-     * Retorna o conteúdo do arquivo IPM convertido para XML.
+     * Returns the contents of the converted IPM file for XML.
      *
-     * @return conversão do conteúdo do arquivo IPM para XML
+     * @return conversion of IPM file contents to XML
      */
     public String xml() {
         StringBuilder output = new StringBuilder(openXmlTag() + infoAsXml(header, "header"));

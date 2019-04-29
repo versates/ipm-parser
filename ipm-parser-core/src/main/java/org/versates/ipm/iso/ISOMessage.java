@@ -4,7 +4,7 @@ import org.jpos.iso.ISOException;
 import org.jpos.iso.ISOMsg;
 
 /**
- * Classe que representa uma mensagem ISO 8583.
+ * Class representing an ISO 8583 message.
  *
  * @author Ramses Vidor
  */
@@ -13,17 +13,17 @@ public class ISOMessage extends ISOMsg {
     private Exception error;
 
     /**
-     * Constrói uma instância de mensagem ISO 8583.
+     * Constructs an ISO 8583 message instance.
      */
     public ISOMessage() {
         super();
     }
 
-    /**
-     * Constrói uma instaância de mensagem ISO 8583, copiando os valores dos campos de uma mensagem do tipo ISOMsg.
-     *
-     * @param message O objeto ISOMsg a ser copiado
-     */
+   /**
+    * Constructs an ISO 8583 message instance by copying field values from a message of type ISOMsg.
+    *
+    * @param message The ISOMsg object to be copied
+    */
     public ISOMessage(ISOMsg message) {
         try {
             for (int i = -1; i <= message.getMaxField(); i++) {
@@ -37,21 +37,21 @@ public class ISOMessage extends ISOMsg {
     }
 
     /**
-     * No caso de mensagens corrompidas, retorna a Exception que contém o erro encontrado ao processar a mensagem ISO
-     * 8583. Retorna null se a mensagem não for corrompida.
+     * In the case of corrupted messages, returns the Exception that contains the error encountered while processing the ISO message
+     * 8583. Returns null if the message is not corrupted.
      *
-     * @return A Exception contendo informações do erro no processamento da mensagem corrompida
+     * @return A Exception containing error information in corrupted message processing
      */
     public Exception getError() {
         return error;
     }
 
     /**
-     * Define a Exception que contém o erro encontrado ao processar a mensagem ISO 8583 no caso de mensagens
-     * corrompidas.
+     * Sets the Exception that contains the error encountered while processing the message ISO 8583 in case of messages
+     * corrupted.
      *
-     * @param error A Exception contendo informações do erro no processamento da mensagem corrompida
-     * @return encadeamento do método, retornando a instância deste objeto
+     * @param error The Exception containing error information in the processing of the corrupted message
+     * @return chaining method, returning the instance of this object
      */
     public ISOMessage setError(Exception error) {
         this.error = error;
@@ -59,9 +59,9 @@ public class ISOMessage extends ISOMsg {
     }
 
     /**
-     * Verifica se a mensagem está corrompida.
+     * Checks if the message is corrupted.
      *
-     * @return TRUE se a mensagem contém qualquer campo corrompido, ou FALSE caso contrário
+     * @return TRUE if the message contains any corrupted field, or FALSE otherwise
      */
     public boolean isCorrupted() {
         return error != null;

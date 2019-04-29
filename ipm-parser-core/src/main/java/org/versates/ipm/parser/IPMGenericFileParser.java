@@ -7,7 +7,7 @@ import org.apache.commons.lang.NotImplementedException;
 import java.util.List;
 
 /**
- * Parser genérico de extração de mensagens ISO 8583.
+ * Generic parser for extracting ISO 8583 messages.
  *
  * @author Ramses Vidor
  */
@@ -16,7 +16,7 @@ public class IPMGenericFileParser extends IPMFileParser {
     private static final long serialVersionUID = -4065429267936576468L;
 
     /**
-     * Constrói uma instância do parser
+     * Constructs an instance of the parser
      */
     public IPMGenericFileParser() {
         super(ISOLayout.GENERIC);

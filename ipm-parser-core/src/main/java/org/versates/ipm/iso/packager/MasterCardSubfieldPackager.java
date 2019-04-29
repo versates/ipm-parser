@@ -11,7 +11,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 /**
- * Classe de extração de subcampos PDS ISO 8583.
+ * Extraction class of ISO 8583 PDS subfields.
  *
  * @author Ramses Vidor
  */
@@ -22,27 +22,27 @@ public abstract class MasterCardSubfieldPackager extends EuroSubFieldPackager im
     private final int tagOffset = 7;
 
     /**
-     * Transcodifica uma mensagem ISO 8583 de <code>String</code> para <code>byte[]</code>
+     * Transcodes an ISO 8583 message from <code> String </ code> to <code> byte [] </ code>
      *
-     * @param message Conteúdo da mensagem ISO 8583 a ser transcodificada em bytes
-     * @return o conteúdo transcodificado em bytes
+     * @param message ISO 8583 message content to be transcoded into bytes
+     * @return transcoded content in bytes
      */
     protected abstract byte[] transcode(String message);
 
     /**
-     * Transcodifica uma mensagem ISO 8583 de <code>byte[]</code> para <code>String</code>
+     * Transcodes an ISO 8583 message from <code> byte [] </ code> to <code> String </ code>
      *
-     * @param bytes Conteúdo da mensagem ISO 8583 a ser transcodificada em <code>byte[]</code>
-     * @return o conteúdo transcodificado em bytes
+     * @param bytes Content of the ISO 8583 message to be transcoded into <code> byte [] </ code>
+     * @return transcoded content in bytes
      */
     protected abstract String transcode(byte[] bytes);
 
     /**
-     * Converte as informações extraídas ao padrão ISO 8583 do arquivo IPM de acordo com a codificação utilizada.
+     * Converts the extracted information to the ISO 8583 standard of the IPM file according to the encoding used.
      *
-     * @param c O componente ISO em processamento
-     * @return o conteúdo em <code>byte[]</code> do componente ISO 8583 em processamento
-     * @throws ISOException Throws an exception when an error occur while parsing
+     * @param c The in-process ISO component
+     * @return the content in <code> byte [] </ code> of the ISO 8583 component being processed
+     * @throws ISOException Throws an exception when an error occurs while parsing
      */
     @Override
     public byte[] pack(final ISOComponent c) throws ISOException {
@@ -66,11 +66,11 @@ public abstract class MasterCardSubfieldPackager extends EuroSubFieldPackager im
     }
 
     /**
-     * Extrai as informações do componente da mensagem ISO 8583 do arquivo IPM de acordo com a codificação utilizada.
+     * Extracts information from the ISO 8583 message component of the IPM file according to the encoding used.
      *
-     * @param m      O componente ISO em processamento
-     * @param buffer O buffer com o conteúdo ISO 8583 a ser processado
-     * @return o conteúdo em <code>byte[]</code> do componente ISO 8583 em processamento
+     * @param m The in-process ISO component
+     * @param buffer The buffer with the ISO 8583 content to be processed
+     * @return the content in <code> byte [] </ code> of the ISO 8583 component being processed
      * @throws ISOException Throws an exception if the extraction fails
      */
     @Override

@@ -3,7 +3,7 @@ package org.versates.ipm.iso.packager;
 import org.jpos.iso.AsciiPrefixer;
 
 /**
- * Classe de extração de subcampos PDS ISO 8583 no formato e codificação ASCII.
+ * Extraction class of ISO 8583 PDS subfields in ASCII format and encoding.
  *
  * @author Ramses Vidor
  */
@@ -12,7 +12,7 @@ public class MasterCardASCIISubfieldPackager extends MasterCardSubfieldPackager 
     private static final long serialVersionUID = 8915742064905847237L;
 
     /**
-     * Constrói uma instância desse objeto.
+     * Constructs an instance of this object.
      */
     public MasterCardASCIISubfieldPackager() {
         super();

@@ -4,7 +4,7 @@ import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.Options;
 
 /**
- * Classe de execução do comando de Ajuda.
+ * Execution class of help command.
  *
  * @author Ramses Vidor
  */
@@ -14,9 +14,9 @@ public class HelpAction extends Action {
     private final Options options;
 
     /**
-     * Constrói uma instância do objeto de comando de ajuda.
+     * Build an instance of the help command object.
      *
-     * @param options As opções definidas para este cliente
+     * @param options The options defined to this client.
      */
     public HelpAction(Options options) {
         this.options = options;

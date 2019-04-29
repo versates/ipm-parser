@@ -14,7 +14,7 @@ import java.util.Map;
 import static org.versates.ipm.helper.Assertion.isTrue;
 
 /**
- * Classe de execução do cliente de conversão de arquivos IPM para outros formatos.
+ * Client execution class of IPM convertion files to another formats.
  *
  * @author Ramses Vidor
  */
@@ -24,11 +24,11 @@ public enum Run {
     private static final CommandLineParser PARSER = new PosixParser();
     private static final Map<String, Action> ACTIONS = new HashMap<String, Action>();
     private static final EncodingAction ENCODING_ACTION = new EncodingAction();
-    private static final String ASK_HELP = "Utilize -h para ajuda.";
-    private static final String VALIDATION_MESSAGE_FILE = "Informe o caminho do arquivo. " + ASK_HELP;
-    private static final String HELP_ACTION_MESSAGE = "Ajuda!";
-    private static final String CONVERSOR_ACTION_MESSAGE = "Caminho do arquivo a ser convertido.";
-    private static final String ENCODING_ACTION_MESSAGE = "Codificação/formato do arquivo IPM. Opções válidas: ASCII ou EBCDIC";
+    private static final String ASK_HELP = "Use -h for help.";
+    private static final String VALIDATION_MESSAGE_FILE ="Inform the file path"  + ASK_HELP;
+    private static final String HELP_ACTION_MESSAGE = "Help!";
+    private static final String CONVERSOR_ACTION_MESSAGE = "File path to be converted.";
+    private static final String ENCODING_ACTION_MESSAGE = "Codification/IPM file format. Valid options: ASCII or EBCDIC.";
     private static final Options OPTIONS = new Options();
 
     static {
@@ -38,9 +38,9 @@ public enum Run {
     }
 
     /**
-     * Método de execução do cliente.
+     * Client's execution method.
      *
-     * @param arguments Argumentos passados para o programa
+     * @param arguments Arguments passed for the program.
      */
     public static void main(String[] arguments) {
         final PrintWriter writer = new PrintWriter(System.out);
@@ -58,9 +58,9 @@ public enum Run {
     }
 
     /**
-     * Retorna o layout ISO 8583 configurado para a conversão do arquivo IPM.
+     * Return ISO 8583 layout configurated to convertion of IPM file.
      *
-     * @return layout ISO 8583 a ser utilizado para conversão
+     * @return layout ISO 8583 to be utilized for convertion.
      */
     public static ISOLayout getLayout() {
         return ENCODING_ACTION.layout();

@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 /**
- * Classe do parser IPM para arquivos IPM MasterCard com codificação EBCDIC.
+ * IPM parser class for IPM MasterCard files with EBCDIC encoding.
  *
  * @author Ramses Vidor
  */
@@ -23,7 +23,7 @@ public class IPMMasterCardEbcdicFileParser extends IPMFileParser {
     private final List<ISOMessage> messages = new ArrayList<ISOMessage>();
 
     /**
-     * Constrói uma instância desse parser.
+     * Constructs an instance of this parser.
      */
     public IPMMasterCardEbcdicFileParser() {
         super(ISOLayout.MASTERCARD_EBCDIC);

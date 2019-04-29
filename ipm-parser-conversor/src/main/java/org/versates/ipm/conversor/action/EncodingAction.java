@@ -4,7 +4,7 @@ import org.versates.ipm.iso.packager.ISOLayout;
 import org.apache.commons.lang.StringUtils;
 
 /**
- * Classe de comando de definição de encoding.
+ * Command class of encoding definition.
  *
  * @author Ramses Vidor
  */
@@ -27,9 +27,9 @@ public class EncodingAction extends Action {
     }
 
     /**
-     * Retorna o layout ISO 8583 configurado para a conversão do arquivo IPM.
+     * Return layout ISO 8583 configurated to convertion of IPM file.
      *
-     * @return layout ISO 8583 a ser utilizado para conversão
+     * @return layout ISO 8583 to be utilized for convertion.
      */
     public ISOLayout layout() {
         return layout == null ? ISOLayout.MASTERCARD_EBCDIC : layout;

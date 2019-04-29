@@ -14,7 +14,7 @@ import java.text.MessageFormat;
 import java.util.List;
 
 /**
- * Classe principal de processamento dos arquivos IPM.
+ * Main processing class of IPM files.
  *
  * @author Ramses Vidor
  */
@@ -26,19 +26,19 @@ public abstract class IPMFileParser implements Serializable {
     private final ISOPackager packager;
 
     /**
-     * Processa o conteúdo do arquivo IPM em <code>byte[]</code>, gerando uma lista de objetos ISOMessage.
+     * Processes the contents of the IPM file in <code> byte [] </ code>, generating a list of ISOMessage objects.
      *
-     * @param bytes O conteúdo do arquivo IPM
-     * @return A lista de ISOMessage extraída do arquivo IPM
-     * @throws IPMParserException Se houver qualquer falha no processo de extração de mensagens do arquivo IPM, uma exceção
-     *                            IPMParserException é lan~cada
+     * @param bytes The contents of the IPM file
+     * @return The ISOMessage list extracted from the IPM file
+     * @throws IPMParserException If there is any failure in the message extraction process of the IPM file, an exception
+     * IPMParserException is thrown
      */
     abstract public List<ISOMessage> parse(byte[] bytes) throws IPMParserException;
 
     /**
-     * Constrói uma instância desse objeto para processamento de arquivos no layout definido.
+     * Constructs an instance of this object for processing files in the defined layout.
      *
-     * @param layout O layout do arquivo a ser processado
+     * @param layout The layout of the file to be processed
      */
     public IPMFileParser(ISOLayout layout) {
         this.layout = layout;
@@ -46,28 +46,28 @@ public abstract class IPMFileParser implements Serializable {
     }
 
     /**
-     * Retorna o layout configurado para processamento do arquivo IPM.
+     * Returns the layout configured for IPM file processing.
      *
-     * @return layout ISO 8583 utilizado
+     * @return ISO 8583 layout used
      */
     public ISOLayout getLayout() {
         return layout;
     }
 
     /**
-     * Retorna o packager utilizado para extração das mensagens ISO 8583.
+     * Returns the packager used for extracting ISO 8583 messages.
      *
-     * @return o packager utilizado para extração
+     * @return the packager used for extraction
      */
     public ISOPackager getPackager() {
         return packager;
     }
 
     /**
-     * Cria um parser com base no layout ISO 8583 definido.
+     * Creates a parser based on the ISO 8583 layout defined.
      *
-     * @param layout Layout ISO 8583 para criação do parser
-     * @return uma instância de parser para extração de mensagens ISO 8583
+     * @param Layout ISO 8583 layout for parser creation
+     * @return a parser instance for extracting ISO messages 8583
      */
     public static IPMFileParser createFileParser(ISOLayout layout) {
         switch (layout) {
@@ -81,38 +81,38 @@ public abstract class IPMFileParser implements Serializable {
     }
 
     /**
-     * Cria um parser configurado com layout ISO 8583 para arquivos IPM MasterCard, codificação ASCII (
-     * <code>ISOLayout.MASTERCARD_ASCII</code>).
+     * Creates a parser configured with ISO 8583 layout for IPM MasterCard files, ASCII encoding (
+     * <code> ISOLayout.MASTERCARD_ASCII </ code>).
      *
-     * @return uma instância de parser para extração de mensagens ISO 8583 MasterCard ASCII
+     * @return an parser instance for extracting ISO 8583 MasterCard ASCII messages
      */
     public static IPMFileParser createMasterCardPreEditFileParser() {
         return new IPMMasterCardPreEditFileParser();
     }
 
     /**
-     * Cria um parser configurado com layout ISO 8583 para arquivos IPM MasterCard, codificação ASCII (
-     * <code>ISOLayout.MASTERCARD_EBCDIC</code>).
+     * Creates a parser configured with ISO 8583 layout for IPM MasterCard files, ASCII encoding (
+     * <code> ISOLayout.MASTERCARD_EBCDIC </ code>).
      *
-     * @return uma instância de parser para extração de mensagens ISO 8583 MasterCard EBCDIC
+     * @return an instance of parser for extracting ISO 8583 messages MasterCard EBCDIC
      */
     public static IPMFileParser createMasterCardEbcdicFileParser() {
         return new IPMMasterCardEbcdicFileParser();
     }
 
     /**
-     * Cria um parser configurado com layout ISO 8583 para arquivos IPM genéricos (<code>ISOLayout.GENERIC</code>).
+     * Creates a parser configured with ISO 8583 layout for generic IPM files (<code> ISOLayout.GENERIC </ code>).
      *
-     * @return uma instância de parser para extração de mensagens ISO 8583 MasterCard ASCII
+     * @return an parser instance for extracting ISO 8583 MasterCard ASCII messages
      */
     public static IPMFileParser createGenericFileParser() {
         return new IPMGenericFileParser();
     }
 
     /**
-     * Cria uma mensagem ISO para o packager em uso.
+     * Creates an ISO message for the packager in use.
      *
-     * @return A ISOMessage criada para o packager
+     * @return The ISOMessage created for the packager
      */
     protected ISOMessage createMessage() {
         final ISOMessage message = new ISOMessage();
@@ -121,11 +121,11 @@ public abstract class IPMFileParser implements Serializable {
     }
 
     /**
-     * Preenche informações padrão de mensagem corrompida.
+     * Fills standard corrupted message information.
      *
-     * @param message A mensagem corrompida
-     * @param e       A exceção lançada na tentativa de extrair a mensagem corrompida
-     * @return Uma instância ISOMsg clonada da mensagem corrompida
+     * @param message The corrupted message
+     * @param and The thrown exception in an attempt to extract the corrupted message
+     * @return An ISOMsg instance cloned from the corrupted message
      */
     protected ISOMsg feedCorruptedMessage(ISOMessage message, Exception e) {
         try {

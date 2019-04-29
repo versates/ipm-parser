@@ -9,7 +9,7 @@ import java.io.PrintStream;
 import java.io.Serializable;
 
 /**
- * Classe que representa a mensagem ISO 8583 como uma transação financeira.
+ * Class representing the ISO 8583 message as a financial transaction.
  *
  * @author Ramses Vidor
  */
@@ -22,11 +22,11 @@ public class ISOTransaction implements Serializable {
     private ISOTransaction pds;
 
     /**
-     * Constrói uma instância de mensagem de transação financeira.
+     * Constructs a financial transaction message instance.
      *
-     * @param message A mensagem ISO 8583 que deverá ser representada como transação financeira
-     * @throws IPMParserException Se os critérios de processamento da mensagem ISO 8583 não forem obedecidos, uma IPMParserException é
-     *                            lançada
+     * @param message The ISO 8583 message that should be represented as a financial transaction
+     * @throws IPMParserException If the ISO 8583 message processing criteria are not obeyed, an IPMParserException is
+       launched
      */
     public ISOTransaction(ISOMessage message) throws IPMParserException {
         if (message == null) {
@@ -45,100 +45,100 @@ public class ISOTransaction implements Serializable {
     }
 
     /**
-     * Retorna o MTI da mensagem ISO 8583.
+     * Returns the MTI of the ISO 8583 message.
      *
-     * @return o código MTI da mensagem
-     * @throws ISOException Se o valor do campo MTI não é válido ou não for possível extrair as informações do campo, uma
-     *                      ISOException é lançada
+     * @return the MTI code of the message
+     * @throws ISOException If the value of the MTI field is not valid or the field information can not be extracted, a
+     * ISOException is thrown
      */
     public String mti() throws ISOException {
         return message.getMTI();
     }
 
     /**
-     * Verifica se o campo está presente na mensagem.
+     * Checks if the field is present in the message.
      *
-     * @param index O índice de identificação do campo DE
-     * @return TRUE se o índice está presente, FALSE caso contrário
+     * @param index The identification index of the DE field
+     * @return TRUE if index is present, FALSE otherwise
      */
     public boolean hasDe(int index) {
         return message.hasField(index);
     }
 
     /**
-     * Verifica se o campo é um PDS.
+     * Checks whether the field is a PDS.
      *
-     * @return TRUE se for um PDS, FALSE caso contrário
+     * @return TRUE if it is a PDS, FALSE otherwise
      */
     public boolean isPds() {
         return pds == null && !isCorrupted();
     }
 
     /**
-     * Verifica se a mensagem ISO 8583 está corrompida.
+     * Checks if ISO 8583 message is corrupted.
      *
-     * @return TRUE se a mensagem estiver corrompida, FALSE caso contrário
+     * @return TRUE if the message is corrupted, FALSE otherwise
      */
     public boolean isCorrupted() {
         return message.isCorrupted();
     }
 
     /**
-     * Retorna a Exception de uma mensagem corrompida.
+     * Returns the Exception of a corrupted message.
      *
-     * @return a Exception caso a mensagem esteja corrompida, ou null se a mensagem for íntegra
+     * @return a Exception if the message is corrupted, or null if the message is complete
      */
     public Exception error() {
         return message.getError();
     }
 
     /**
-     * Retorna o campo DE com o índice informado.
+     * Returns the DE field with the given index.
      *
-     * @param index O índice de identificação do campo
-     * @return O campo DE indicado pelo índice
-     * @throws ISOException Se o valor do campo DE não é válido ou não for possível extrair as informações do campo, uma
-     *                      ISOException é lançada
+     * @param index The field ID index
+     * @return The DE field indicated by the index
+     * @throws ISOException If the value of the DE field is not valid or the field information can not be extracted, a
+     * ISOException is thrown
      */
     public ISODe de(int index) throws ISOException {
         return (hasDe(index)) ? new ISODe(this, index, message.getValue(index)) : new ISODe(this, index);
     }
 
     /**
-     * Retorna o campo PDS com o índice informado.
+     * Returns the PDS field with the given index.
      *
-     * @param index O índice de identificação do campo
-     * @return O campo PDS indicado pelo índice
-     * @throws ISOException Se o valor do campo PDS não é válido ou não for possível extrair as informações do campo, uma
-     *                      ISOException é lançada
+     * @param index The field ID index
+     * @return The PDS field indicated by the index
+     * @throws ISOException If the value of the PDS field is not valid or the field information can not be extracted, a
+     * ISOException is thrown
      */
     public ISODe pds(int index) throws ISOException {
         return (pds != null) ? pds.de(index) : new ISODe(index);
     }
 
     /**
-     * Retorna a mensagem em seu formato original antes da extração em byte[].
+     * Returns the message in its original format before byte extraction [].
      *
-     * @return a mensagem ISO 8583 em byte[]
-     * @throws ISOException Se ocorrer algum erro ao converter a mensagem ao seu valor original, uma ISOException é lançada
+     * @return the ISO message 8583 in byte []
+     * @throws ISOException If an error occurs when converting the message to its original value, an ISOException is thrown
      */
     public byte[] pack() throws ISOException {
         return isCorrupted() ? error().toString().getBytes() : message.pack();
     }
 
     /**
-     * Imprime a saída do conteúdo da mensagem no formato XML no stream definido pelo parâmetro de entrada.
+     * Prints the output of the message content in XML format in the stream defined by the input parameter.
      *
-     * @param stream Stream para saída do output onde o resultado deve ser impresso
+     * @param stream Stream to output the output where the result should be printed
      */
     public void dump(PrintStream stream) {
         stream.println(xml("\t"));
     }
 
     /**
-     * Retorna o conteúdo da mensagem ISO 8583 convertida para XML.
+     * Returns the contents of the ISO 8583 message converted to XML.
      *
-     * @return conversão do conteúdo da mensagem ISO 8583 para XML
+     * @return conversion of message content ISO 8583 to XML
      */
     public String xml(String ident) {
         if (StringUtils.isEmpty(ident)) {

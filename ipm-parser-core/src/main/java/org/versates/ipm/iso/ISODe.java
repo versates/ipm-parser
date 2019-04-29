@@ -12,9 +12,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * Classe de representação de campos DE e PDS. Campos DE e PDS são campos que pertencem à uma mensagem ISO 8583 e,
- * obrigatorizamente, possuem um índice de identificação do campo.
- *
+ * Representation class of the DE and PDS fields. DE and PDS are fields which belong to a message ISO 8583 and,
+ * mandatorily, have an identification index field.
  * @author Ramses Vidor
  */
 public class ISODe implements Serializable {
@@ -25,19 +24,17 @@ public class ISODe implements Serializable {
     private ISOTransaction transaction;
 
     /**
-     * Constrói uma instância de campo DE ou PDS.
-     *
-     * @param index O índice do campo na mensagem ISO 8583
+     * Build an instance of the DE and PDS field.
+     * @param index The field index into the ISO 8583 message
      */
     public ISODe(int index) {
         this(index, "");
     }
 
     /**
-     * Constrói uma instância de campo DE ou PDS com valor já definido.
-     *
-     * @param index O índice do campo na mensagem ISO 8583
-     * @param value O valor do campo DE ou PDS
+     * Build an instance of the DE and PDS field with already defined value.
+     * @param index The field index into the ISO 8583 message.
+     * @param value The field value of DE or PDS.
      */
     public ISODe(int index, Object value) {
         this.index = index;
@@ -45,21 +42,19 @@ public class ISODe implements Serializable {
     }
 
     /**
-     * Constrói uma instância de campo DE ou PDS vinculada à uma mensagem ISO 8583 com valor já definido.
-     *
-     * @param transaction A mensagem de transação ISO 8583 a qual o campo está vinculado
-     * @param index       O índice do campo na mensagem ISO 8583
+     * Build an instance of the DE and PDS field linked to an ISO 8583 message with already defined value.
+     * @param transaction The ISO 8583 transaction message which the field is linked.
+     * @param index       The field index into ISO 8583 message.
      */
     public ISODe(ISOTransaction transaction, int index) {
         this(transaction, index, "");
     }
 
     /**
-     * Constrói uma instância de campo DE ou PDS vinculada à uma mensagem ISO 8583.
-     *
-     * @param transaction A mensagem de transação ISO 8583 a qual o campo está vinculado
-     * @param index       O índice do campo na mensagem ISO 8583
-     * @param value       O valor do campo DE ou PDS
+     * Build an instance of the DE and PDS field linked to an ISO 8583 message.
+     * @param transaction The ISO 8583 transaction message which the field is linked.
+     * @param index       The field index into ISO 8583 message.
+     * @param value       The DE or PDS field valeu.
      */
     public ISODe(ISOTransaction transaction, int index, Object value) {
         this(index, value);
@@ -67,13 +62,13 @@ public class ISODe implements Serializable {
     }
 
     /**
-     * Extrai um subcampo do campo DE ou PDS.
+     * Extracts subfield from the DE or PDS field.
      *
-     * @param startIndex Indica o índice inicial do subcampo
-     * @param endIndex   Indica o índice final do subcampo
-     * @return o subcampo do campo DE ou PDS indicado pelos índices
-     * @throws ISOException Se o subcampo não é válido ou não for possível extrair as informações do subcampo, uma ISOException é
-     *                      lançada
+     * @param startIndex Indicates the initial subfield index.
+     * @param endIndex Indicates the final index of the subfield
+     * @return the subfield of the DE or PDS field indicated by the indexes.
+     * @throws ISOException If the subfield is not valid or the subfield information can not be extracted, an ISOException is
+     *       launched.
      */
     public ISODe subfield(int startIndex, int endIndex) throws ISOException {
         if (startIndex < 1) {
@@ -83,38 +78,42 @@ public class ISODe implements Serializable {
         return value.length() < endIndex ? new ISODe(-1) : new ISODe(-1, value.substring(--startIndex, endIndex));
     }
 
-    /**
-     * Retorna o índice do campo DE ou PDS
+    /** Returns the index of the DE or PDS field
+     *
      *
-     * @return o índice do campo
-     */
+     * @return the field index
+     */
+
     public int index() {
         return index;
     }
 
     /**
-     * Retorna o valor do campo DE ou PDS.
-     *
-     * @return o valor do campo
+     * Returns the value of the DE or PDS field.
+     *      
+     * @return the value of the field
      */
+
     public String value() {
         return value;
     }
 
     /**
-     * Retorna o valor do campo DE ou PDS no tipo Character para flags de 1 byte.
+     * Returns the value of the DE or PDS field in the Character type for 1-byte flags.
      *
-     * @return o valor do campo convertido para Character
-     */
+     * @return the value of the field converted to Character
+     */
+
     public Character flag() {
         return empty() ? null : value.charAt(0);
     }
 
-    /**
-     * Retorna o valor do campo DE ou PDS convertido para Long para casos onde o valor do retorno seja numérico.
-     *
-     * @return o valor do campo convertido para Long
-     */
+   /**
+    * Returns the value of the DE or PDS field converted to Long for cases where the return value is numeric.
+    *
+    * @return the converted field value to Long
+    */
+
     public Long number() {
         try {
             return Long.parseLong(value);
@@ -124,39 +123,39 @@ public class ISODe implements Serializable {
         return 0L;
     }
 
-    /**
-     * Retorna o valor do campo DE ou PDS convertido para BigDecimal para casos onde o valor do retorno seja monetário.
-     * O número de casas decimais deve ser informado para a correta conversão em valor monetário. Para este método, deve
-     * ser passado o campo DE ou PDS que contenha a informação de expoente de moeda, indicando o número de casas
-     * decimais.
-     *
-     * @param expoent O expoente de moeda, indicando o número de casas decimais
-     * @return o valor do campo convertido em BigDecimal para representação monetária
-     */
+   /**
+    * Returns the value of the DE or PDS field converted to BigDecimal for cases where the return value is monetary.
+    * The number of decimal places must be informed for the correct conversion into monetary value. For this method,
+    * be passed the DE or PDS field that contains the currency exponent information, indicating the number of houses
+    * decimals.
+    *
+    * @param expoent The currency exponent, indicating the number of decimal places
+    * @return the value of the field converted into BigDecimal for monetary representation
+    */
     public BigDecimal currency(ISODe expoent) {
         return currency(expoent == null ? 0 : expoent.number().intValue());
     }
 
     /**
-     * Retorna o valor do campo DE ou PDS convertido para BigDecimal para casos onde o valor do retorno seja monetário.
-     * O número de casas decimais deve ser informado para a correta conversão em valor monetário. Para este método, deve
-     * ser passado o valor de expoente de moeda como String, indicando o número de casas decimais.
-     *
-     * @param expoent O expoente de moeda, indicando o número de casas decimais
-     * @return o valor do campo convertido em BigDecimal para representação monetária
-     */
+     * Returns the value of the DE or PDS field converted to BigDecimal for cases where the return value is monetary.
+     * The number of decimal places must be informed for the correct conversion into monetary value. For this method,
+     * be passed the currency exponent value as String, indicating the number of decimal places.
+     *
+     * @param expoent The currency exponent, indicating the number of decimal places
+     * @return the value of the field converted into BigDecimal for monetary representation
+     */
     public BigDecimal currency(String expoent) {
         return currency(expoent == null ? 0 : Integer.parseInt(expoent));
     }
 
     /**
-     * Retorna o valor do campo DE ou PDS convertido para BigDecimal para casos onde o valor do retorno seja monetário.
-     * O número de casas decimais deve ser informado para a correta conversão em valor monetário. Para este método, deve
-     * ser passado o valor de expoente de moeda como Integer, indicando o número de casas decimais.
-     *
-     * @param expoent O expoente de moeda, indicando o número de casas decimais
-     * @return o valor do campo convertido em BigDecimal para representação monetária
-     */
+     * Returns the value of the DE or PDS field converted to BigDecimal for cases where the return value is monetary.
+     * The number of decimal places must be informed for the correct conversion into monetary value. For this method,
+     * be passed the currency exponent value as Integer, indicating the number of decimal places.
+     *
+     * @param expoent The currency exponent, indicating the number of decimal places
+     * @return the value of the field converted into BigDecimal for monetary representation
+     */
     public BigDecimal currency(Integer expoent) {
         int scale = expoent == null ? 0 : expoent;
 
@@ -175,18 +174,18 @@ public class ISODe implements Serializable {
     }
 
     /**
-     * Retorna o valor do campo DE ou PDS convertido para Date para casos onde o valor do retorno seja uma data.
+     * Returns the value of the DE or PDS field converted to Date for cases where the return value is a date.
      *
-     * @param format O formato representado no layout do campo no arquivo no formato Java. Exemplos: Para campos onde o
-     *               formato do layout seja igual a AADDMM, deve ser fornecido o formato Java correspondente, nesse caso:
-     *               yyMMdd.
-     *               <p>
-     *               Formatos ISO 8583 e seus respectivos valores em formato Java: AAMMDD: yyMMdd hhmmss: HHmmss
-     *               AAMMDDhhmmss: yyMMddHHmmss
-     * @return o valor do campo convertido para Date
-     * @throws ISOException Se o valor do campo não é válido ou não for possível extrair as informações do campo, uma
-     *                      ISOException é lançada
-     */
+     * @param format The format represented in the layout of the field in the file in Java format. Examples: For fields where the
+     * layout format is equal to AADDMM, the corresponding Java format must be provided, in this case:
+     * yyMMdd.
+     * <p>
+     * ISO 8583 formats and their respective values in Java format: AAMMDD: yyMMdd hhmmss: HHmmss
+     * AAMMDDhhmmss: yyMMddHHmmss
+     * @return the value of the field converted to Date
+     * @throws ISOException If the field value is not valid or the field information can not be extracted, a
+     * ISOException is thrown
+     */
     public Date date(String format) throws ISOException {
         try {
             return !empty() ? new SimpleDateFormat(format).parse(value) : null;
@@ -195,30 +194,30 @@ public class ISODe implements Serializable {
         }
     }
 
-    /**
-     * Retorna o comprimento do valor do campo.
-     *
-     * @return o comprimento do valor do campo
-     */
+   /**
+    * Returns the length of the field value.
+    *
+    * @return the length of the field value
+    */
     public int length() {
         return value.length();
     }
 
-    /**
-     * Verifica se o campo contém algum valor, retornado TRUE se for vazio.
-     *
-     * @return TRUE se o campo for vazio, FALSE se houver qualquer valor, mesmo espaços
-     */
+   /**
+    * Checks whether the field contains any value, returned TRUE if it is empty.
+    *
+    * @return TRUE if the field is empty, FALSE if there is any value, even spaces
+    */
     public boolean empty() {
         return length() <= 0;
     }
 
-    /**
-     * Retorna uma tag XML que representado as informações do campo e seu conteúdo.
-     *
-     * @param ident Padrão de identação da tag XML
-     * @return tag XML representando o campo
-     */
+  /**
+   * Returns an XML tag that represents the field information and its contents.
+   *
+   * @param ident XML tag indentation pattern
+   * @return XML tag representing the field
+   */
     public String xml(String ident) {
         if (StringUtils.isEmpty(ident) || "\t\t".equals(ident)) {
             ident = "\t";
@@ -227,20 +226,20 @@ public class ISODe implements Serializable {
         return MessageFormat.format(getXmlTag(), ident, index, value, belongsToPds() ? "pds" : "de");
     }
 
-    /**
-     * Verifica se o campo é membro de um campo do tipo PDS.
-     *
-     * @return TRUE se o campo pertence a um campo PDS, caso contrário, retorna FALSE
-     */
+  /**
+   * Checks whether the field is a member of a field of type PDS.
+   *
+   * @return TRUE if the field belongs to a PDS field, otherwise returns FALSE
+   */
     public boolean belongsToPds() {
         return transaction != null && transaction.isPds();
     }
 
     /**
-     * Retorna o valor do campo por padrão.
+     * Returns the value of the field by default.
      *
-     * @return valor do campo
-     */
+     * @return field value
+     */
     @Override
     public String toString() {
         return value;

@@ -3,7 +3,7 @@ package org.versates.ipm.iso.packager;
 import org.jpos.iso.EbcdicPrefixer;
 
 /**
- * Classe de extração de subcampos PDS ISO 8583 no formato e codificação EBCDIC.
+ * Extraction class of ISO 8583 PDS subfields in EBCDIC format and encoding.
  *
  * @author Ramses Vidor
  */
@@ -12,7 +12,7 @@ public class MasterCardEBCDICSubfieldPackager extends MasterCardSubfieldPackager
     private static final long serialVersionUID = -713999477959913829L;
 
     /**
-     * Constrói uma instância desse objeto.
+     * Constructs an instance of this object.
      */
     public MasterCardEBCDICSubfieldPackager() {
         super();

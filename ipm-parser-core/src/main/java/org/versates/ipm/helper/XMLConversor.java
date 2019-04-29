@@ -13,7 +13,7 @@ import java.nio.charset.Charset;
 import java.text.MessageFormat;
 
 /**
- * Classe utilitária para geração de output em XML de arquivos IPM.
+ * Utility class for generation of output XML of IPM files.
  *
  * @author Ramses Vidor
  */
@@ -30,9 +30,8 @@ public enum XMLConversor {
     }
 
     /**
-     * Imprime o output do arquivo IPM PRE-EDIT (ASCII) no formato XML no console do sistema.
-     *
-     * @param filename O nome do arquivo IPM - deve ser informado o caminho completo
+     * Print IPM PRE-EDIT file output (ASCII) into XML format in the console system.
+     * @param filenane The IPM file name - must be informed the complete path.
      */
     public static void dumpPreEdit(String filename) {
         dump(filename, ISOLayout.MASTERCARD_ASCII);
@@ -40,27 +39,25 @@ public enum XMLConversor {
 
     /**
      * Imprime o output do arquivo IPM EBCDIC (IBM1047) no formato XML no console do sistema.
-     *
-     * @param filename O nome do arquivo IPM - deve ser informado o caminho completo
+     * Print IPM EBCDIC file output (IBM1074) into XML file in the console system.
+     * @param filenane The IPM file name - must be informed the complete path.
      */
     public static void dumpEbcdic(String filename) {
         dump(filename, ISOLayout.MASTERCARD_EBCDIC);
     }
 
     /**
-     * Imprime o output do arquivo IPM de acordo com o layout definido no formato XML no console do sistema.
-     *
-     * @param filename O nome do arquivo IPM - deve ser informado o caminho completo
-     * @param layout   O layout ISO 8583 compatível com o arquivo a ser processado
+     * Print the IPM file output according to layout pre-difined into XML format in the console system.
+     * @param filenane The IPM file name - must be informed the complete path.
+     * @param layout   The layout ISO 8583 compatible to the file which will be processed.
      */
     public static void dump(String filename, ISOLayout layout) {
         System.out.println(xml(filename, layout));
     }
 
     /**
-     * Converte o arquivo IPM EBCDIC (IBM1047) para o formato XML.
-     *
-     * @param filename O nome do arquivo IPM - deve ser informado o caminho completo
+     * Convert IPM EBCDIC file output (IBM1074) into XML file format.
+     * @param filenane The IPM file name - must be informed the complete path.
      */
     public static String ebcdicIpmToXml(String filename) {
         return xml(filename, ISOLayout.MASTERCARD_EBCDIC);
@@ -68,18 +65,17 @@ public enum XMLConversor {
 
     /**
      * Converte o arquivo IPM PRE-EDIT (ASCII) para o formato XML.
-     *
-     * @param filename O nome do arquivo IPM - deve ser informado o caminho completo
+     * Convert IPM PRE-EDIT file (ASCII) into XML file format.
+     * @param filenane The IPM file name - must be informed the complete path.
      */
     public static String asciiIpmToXml(String filename) {
         return xml(filename, ISOLayout.MASTERCARD_ASCII);
     }
 
     /**
-     * Converte o arquivo IPM de acordo com o layout definido para o formato XML.
-     *
-     * @param filename O nome do arquivo IPM - deve ser informado o caminho completo
-     * @param layout   O layout ISO 8583 compatível com o arquivo a ser processado
+     * Convert the IPM file output according to layout pre-difined into XML format.
+     * @param filenane The IPM file name - must be informed the complete path.
+     * @param layout   The layout ISO 8583 compatible to the file which will be processed.
      */
     public static String xml(String filename, ISOLayout layout) {
         try {

@@ -4,14 +4,14 @@ import org.versates.ipm.conversor.Run;
 import org.versates.ipm.helper.XMLConversor;
 
 /**
- * Classe do comando de conversão de arquivo IPM para XML.
+ * Conversion command class from file IPM to XML.
  *
  * @author Ramses Vidor
  */
 public class ConversorAction extends Action {
 
     /**
-     * Constrói uma instância desse objeto.
+     * Build an instance of this object.
      */
     public ConversorAction() {
     }

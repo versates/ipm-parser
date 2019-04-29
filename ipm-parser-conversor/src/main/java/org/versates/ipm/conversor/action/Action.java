@@ -1,16 +1,16 @@
 package org.versates.ipm.conversor.action;
 
 /**
- * Classe de comandos do cliente.
+ * Command class of the client.
  *
  * @author Ramses Vidor
  */
 public abstract class Action {
 
     /**
-     * Executa o comando solicitado pelo cliente.
+     * Execute the command requested by the client.
      *
-     * @param argument Argumento a ser passado para o comando
+     * @param argument Argument to be passed for the command.
      */
     public abstract void execute(String argument);
 

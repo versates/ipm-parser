@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Classe do parser IPM para arquivos IPM MasterCard com codificação ASCII/PRE-EDIT.
+ * IPM parser class for IPM MasterCard files with ASCII / PRE-EDIT encoding.
  *
  * @author Ramses Vidor
  */
@@ -21,7 +21,7 @@ public class IPMMasterCardPreEditFileParser extends IPMFileParser {
     private static final int DEFAULT_HEADER_LENGTH = 132;
 
     /**
-     * Constrói uma instância desse parser.
+     * Constructs an instance of this parser.
      */
     public IPMMasterCardPreEditFileParser() {
         super(ISOLayout.MASTERCARD_ASCII);

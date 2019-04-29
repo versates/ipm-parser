@@ -3,24 +3,24 @@ package org.versates.ipm.iso.packager;
 import java.nio.charset.Charset;
 
 /**
- * Enumera os tipos de layout disponíveis para processamento de arquivos IPM.
+ * Lists the layout types available for processing IPM files.
  *
  * @author Ramses Vidor
  */
 public enum ISOLayout {
 
     /**
-     * Layout genérico, para arquivos IPM de origem desconhecida e/ou indefinidos.
+     * Generic layout, for unknown and / or undefined IPM files.
      */
     GENERIC(Charset.forName("ISO-8859-1"), ""),
 
     /**
-     * Layout PRE-EDIT/ASCII para arquivos IPM MasterCard.
+     * PRE-EDIT / ASCII layout for IPM MasterCard files.
      */
     MASTERCARD_ASCII(Charset.forName("ISO-8859-1"), "mastercard-ascii.xml"),
 
     /**
-     * Layout EBCDIC/MainFrame (IBM1047) para arquivos IPM MasterCard.
+     * EBCDIC / MainFrame Layout (IBM1047) for IPM MasterCard files.
      */
     MASTERCARD_EBCDIC(Charset.forName("IBM1047"), "mastercard-ebcdic.xml");
 
@@ -33,18 +33,18 @@ public enum ISOLayout {
     }
 
     /**
-     * Retorna o charset padrão definido do layout.
+     * Returns the default charset of the layout.
      *
-     * @return charset do layout
+     * @return charset of layout
      */
     public Charset getCharset() {
         return charset;
     }
 
     /**
-     * Retorna o caminho do arquivo XML de configuração do layout ISO 8583.
+     * Returns the path of the ISO 8583 layout configuration XML file.
      *
-     * @return o caminho do arquivo de configuração
+     * @return the path of the configuration file
      */
     public String getConfigurationPath() {
         return "com/totvscard/ipm/iso/packager/" + configuration;

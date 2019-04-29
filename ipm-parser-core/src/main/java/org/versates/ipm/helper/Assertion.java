@@ -3,7 +3,7 @@ package org.versates.ipm.helper;
 import static java.text.MessageFormat.format;
 
 /**
- * Classe utilitária para expressões booleanas.
+ * Pratical class for boolean expressions.
  *
  * @author Ramses Vidor
  */
@@ -13,23 +13,24 @@ public enum Assertion {
     private static final Class<RuntimeException> DEFAULT_EXCEPTION = RuntimeException.class;
 
     /**
-     * Verifica se o objeto não é nulo.
+     * Verify if the object is not null.
      *
-     * @param object    O objeto a ser testado
-     * @param message   A mensagem a ser exibida se a expressão retornar FALSE
-     * @param arguments Parâmetros da mensagem de bundle
+     * @param object    The object to be treated.
+     * @param message   The message to be shown if the expressions returns FALSE.
+     * @param arguments Bundle parameters message.
      */
     public static void notNull(final Object object, final String message, final Object... arguments) {
         notNull(DEFAULT_EXCEPTION, object, message, arguments);
     }
 
     /**
-     * Verifica se o objeto não é nulo.
+     * Verify if the object is not null.
      *
-     * @param exceptionClass A classe de exceção a ser lançada caso a expressão retorne FALSE
-     * @param object         O objeto a ser testado
-     * @param message        A mensagem a ser exibida se a expressão retornar FALSE
-     * @param arguments      Parâmetros da mensagem de bundle
+     * @param exceptionClass The exception class to be lunched if the expression returns FALSE.
+     *
+     * @param object    The object to be tested.
+     * @param message   The message to be shown if the expressions returns FALSE.
+     * @param arguments Bundle parameters message.
      */
     public static void notNull(final Class<? extends RuntimeException> exceptionClass, final Object object,
                                final String message, final Object... arguments) {
@@ -37,23 +38,23 @@ public enum Assertion {
     }
 
     /**
-     * Verifica se a {@link String} não é vazia.
+     * Verify if {@link String} is not empty.
      *
-     * @param string    A {@link String} a ser testada
-     * @param message   A mensagem a ser apresentada caso a expressão retorne FALSE
-     * @param arguments Parâmetros da mensagem de bundle
+     * @param string    The {@link String} to be tested.
+     * @param message   The message to be shown if the expressions returns FALSE.
+     * @param arguments Bundle parameters message.
      */
     public static void notEmptyString(final String string, final String message, final Object... arguments) {
         notEmptyString(DEFAULT_EXCEPTION, string, message, arguments);
     }
 
     /**
-     * Verifica se a {@link String} não é vazia.
+     * Verify if {@link String} is not empty.
      *
-     * @param exceptionClass A classe de exceção a ser lançada caso a expressão retorne FALSE
-     * @param string         A {@link String} a ser testada
-     * @param message        A mensagem a ser apresentada caso a expressão retorne FALSE
-     * @param arguments      Parâmetros da mensagem de bundle
+     * @param exceptionClass The exception class to be lunched if the expression returns FALSE.
+     * @param string    The {@link String} to be tested.
+     * @param message   The message to be shown if the expressions returns FALSE.
+     * @param arguments Bundle parameters message.
      */
     public static void notEmptyString(final Class<? extends RuntimeException> exceptionClass, final String string,
                                       final String message, final Object... arguments) {
@@ -62,23 +63,23 @@ public enum Assertion {
     }
 
     /**
-     * Verifica se a expressão boolean é verdadeira.
+     *Verify if the boolean expression is TRUE.
      *
-     * @param condition A expressão booleana a ser testada
-     * @param message   A mensagem a ser apresentada caso a expressão retorne FALSE
-     * @param arguments Parâmetros da mensagem de bundle
+     * @param condition The boolean expression to be tested.
+     * @param message   The message to be shown if the expressions returns FALSE.
+     * @param arguments Bundle parameters message.
      */
     public static void isTrue(final boolean condition, final String message, final Object... arguments) {
         isTrue(DEFAULT_EXCEPTION, condition, message, arguments);
     }
 
     /**
-     * Verifica se a expressão boolean é verdadeira.
+     *Verify if the boolean expression is TRUE.
      *
-     * @param exceptionClass A classe de exceção a ser lançada caso a expressão retorne FALSE
-     * @param condition      A expressão booleana a ser testada
-     * @param message        A mensagem a ser apresentada caso a expressão retorne FALSE
-     * @param arguments      Parâmetros da mensagem de bundle
+     * @param exceptionClass The exception class to be lunched if the expression returns FALSE.
+     * @param condition The boolean expression to be tested.
+     * @param message   The message to be shown if the expressions returns FALSE.
+     * @param arguments Bundle parameters message.
      */
     public static void isTrue(final Class<? extends RuntimeException> exceptionClass, final boolean condition,
                               final String message, final Object... arguments) {
